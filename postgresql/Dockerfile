@@ -1,4 +1,4 @@
-FROM postgres:9.6.3
+FROM postgres:9.5.7
 LABEL vendor="pokemon-radar-go"                                                                                    \
 	  maintainer_1="Ruben Vasallo <ollasav.nebur@gmail.com>"                                                       \
       maintainer_2="David Sola <d.sola.03@gmail.com>"                              
