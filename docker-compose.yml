@@ -1,0 +1,27 @@
+version: '3'
+
+volumes:
+  pokemon-radar-go-mongodb-input-data:
+    external: true
+
+networks:
+  pokemon-radar-go-network:
+    external: true
+
+services:
+  mongodb-model-input:
+    image: pokemon-radar-go/mongodb:latest
+    container_name: mongodb-model-input
+    hostname: mongo-model-input.pokemon-radar-go.dev
+    volumes:
+      - pokemon-radar-go-mongodb-input-data:/data/db
+    networks:
+      pokemon-radar-go-network:
+        aliases:
+          - mongo-model-input.pokemon-radar-go.dev
+    ports:
+      - "27018:27017"
+
+networks:
+  pokemon-radar-go-network:
+    driver: bridge
