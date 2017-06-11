@@ -3,15 +3,17 @@ version: '3'
 volumes:
   pokemon-radar-go-mongodb-input-data:
     external: true
+  pokemon-radar-go-postgresql-data:
+    external: true
 
 networks:
   pokemon-radar-go-network:
     external: true
 
 services:
-  mongodb-model-input:
+  pokemon-radar-go-mongodb-model-input:
     image: pokemon-radar-go/mongodb:latest
-    container_name: mongodb-model-input
+    container_name: pokemon-radar-go-mongodb-model-input
     hostname: mongo-model-input.pokemon-radar-go.dev
     volumes:
       - pokemon-radar-go-mongodb-input-data:/data/db
@@ -21,6 +23,19 @@ services:
           - mongo-model-input.pokemon-radar-go.dev
     ports:
       - "27018:27017"
+
+  pokemon-radar-go-postgresql-data:
+    image: pokemon-radar-go/postgresql:latest
+    container_name: pokemon-radar-go-postgresql-data
+    hostname: postgresql-data.pokemon-radar-go.dev
+    volumes:
+      - pokemon-radar-go-postgresql-data:/data/db
+    networks:
+      pokemon-radar-go-network:
+        aliases:
+          - postgresql-data.pokemon-radar-go.dev
+    ports:
+      - "5432:5432"
 
 networks:
   pokemon-radar-go-network:

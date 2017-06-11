@@ -5,4 +5,5 @@ source "${SCRIPT_DIR}/bash_lib.sh"
 
 ensure_docker_network_existence "${PRJ_NAME}-network"                                                               && \
 ensure_docker_volume_existence "${PRJ_NAME}-mongodb-input-data"                                                     && \
+ensure_docker_volume_existence "${PRJ_NAME}-postgresql-data"                                                        && \
 docker-compose -f "${SCRIPT_DIR}/docker-compose.yml" up --no-build --force-recreate -d                                 ;
