@@ -1,6 +1,7 @@
 FROM mongo:3.4
 LABEL vendor="pokemon-radar-go"                                                 \
-      maintainer_2="David Sola <d.sola.03@gmail.com>"
+	  maintainer_1="Ruben Vasallo <ollasav.nebur@gmail.com>"                    \
+      maintainer_2="David Sola <d.sola.03@gmail.com>"                              
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm-256color
