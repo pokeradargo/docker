@@ -17,6 +17,7 @@ services:
     hostname: mongo-model-input.pokemon-radar-go.dev
     volumes:
       - pokemon-radar-go-mongodb-input-data:/data/db
+      - ~/Projects:/data
     networks:
       pokemon-radar-go-network:
         aliases:
@@ -30,12 +31,29 @@ services:
     hostname: postgresql-data.pokemon-radar-go.dev
     volumes:
       - pokemon-radar-go-postgresql-data:/data/db
+      - ~/Projects:/data
     networks:
       pokemon-radar-go-network:
         aliases:
           - postgresql-data.pokemon-radar-go.dev
     ports:
       - "5432:5432"
+
+  pokemon-radar-go-spark:
+    image: pokemon-radar-go/spark:latest
+    container_name: pokemon-radar-go-spark
+    hostname: spark.pokemon-radar-go.dev
+    volumes:
+      - ~/Projects:/data
+    networks:
+      pokemon-radar-go-network:
+        aliases:
+          - spark.pokemon-radar-go.dev
+    ports:
+      - "8088:8088"
+      - "8042:8042"
+    depends_on:
+      - pokemon-radar-go-mongodb-model-input
 
 networks:
   pokemon-radar-go-network:
