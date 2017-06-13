@@ -19,7 +19,7 @@ RUN `# Post GIS installation`                                                   
     sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt xenial-pgdg main" >> /etc/apt/sources.list'       && \
     wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | apt-key add - && \
     apt-get -y update                                                                                          && \
-	apt install -y postgis postgresql-9.6-postgis-2.3 postgresql-contrib-9.6                                      ;
+	apt install -y postgis postgresql-9.5-postgis-2.3 postgresql-contrib-9.5                                      ;
 
 RUN `# System Timezone`                                                                                        && \
     ln -sf /usr/share/zoneinfo/UTC /etc/localtime                                                                 ;
