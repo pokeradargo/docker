@@ -1,0 +1,26 @@
+version: "3"
+services:
+  elastic-master:
+    image: pokeradar-elastic
+    deploy:
+      replicas: 1
+    ports:
+      - "9200:9200"
+    command: /usr/share/elasticsearch/bin/elasticsearch -Enode.master=true -Ecluster.name=pokeradar-logs -Enode.name="pokeradar master"
+    networks:
+      pokeradargo:
+        aliases:
+          - pokeradar-elastic-master.sandbox
+  elastic-node:
+    depends_on:
+      - elastic-master
+    image: pokeradar-elastic
+    deploy:
+      replicas: 2
+    command: /usr/share/elasticsearch/bin/elasticsearch -Enode.master=false -Ecluster.name=pokeradar-logs -Ediscovery.zen.ping.unicast.hosts=pokeradar-elastic-master.sandbox
+    networks:
+      - pokeradargo
+networks:
+  pokeradargo:
+
+
