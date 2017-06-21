@@ -57,6 +57,20 @@ services:
       - pokemon-radar-go-mongodb-model-input
     tty: true
 
+  pokemon-radar-go-rbase:
+    image: pokemon-radar-go/rbase:latest
+    container_name: pokemon-radar-go-rbase
+    hostname: rbase.pokemon-radar-go.dev
+    volumes:
+      - ~/Projects:/data
+    networks:
+      pokemon-radar-go-network:
+        aliases:
+          - rbase.pokemon-radar-go.dev
+    depends_on:
+      - pokemon-radar-go-mongodb-model-input
+    tty: true
+
 networks:
   pokemon-radar-go-network:
     driver: bridge

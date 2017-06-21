@@ -30,3 +30,13 @@ docker build                                                                   \
     -t pokemon-radar-go/spark:1.0                                              \
     -t pokemon-radar-go/spark:latest                                           \
     ${SCRIPT_DIR}/spark                                                        ;
+
+
+echo -e "\e[1m\e[39m "                                                      && \
+echo -e "\e[32m========================================\e[39m"              && \
+echo -e "\e[32m= \e[34mBuilding R image:               \e[32m=\e[39m"       && \
+echo -e "\e[32m========================================\e[39m \e[0m"        && \
+docker build                                                                   \
+    -t pokemon-radar-go/rbase:1.0                                              \
+    -t pokemon-radar-go/rbase:latest                                           \
+    ${SCRIPT_DIR}/rbase                                                        ;
