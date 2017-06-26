@@ -12,4 +12,4 @@ RUN `# System Timezone` && \
 
 RUN `# Install dependencies` && \
     apt-get update && \
-    apt-get install -y curl openssl;
+    apt-get install -y curl openssl libcurl4-openssl-dev libssl-dev;
