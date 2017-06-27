@@ -18,4 +18,4 @@ RUN	cd /data/ && \
 
 WORKDIR /data/
 
-CMD ["FLASK_APP=App/index.py", "flask", "run"]
+CMD ["./start_app.sh"]
